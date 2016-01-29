@@ -12,13 +12,13 @@ Array.prototype.remove = function(dx)
 } 
 
 var x,y,x1,y1,x2,y2,x3,y3,mark =0;
-var rstArr = new Array(0,0,0,0,0,0);
+var rstArr = new Array(8);
 for(var j = 0; j < 6; j++){
 	rstArr = new Array();
 	eightArr = new Array(1, 2, 3, 4, 5, 6, 7, 8);
 	x = j + 1; rstArr[0]=(x); eightArr.remove(eightArr.indexOf(x));
 	y = x + values[0]; rstArr[1]=(y); eightArr.remove(eightArr.indexOf(y));
-	// console.log(rstArr+"-"+eightArr);
+	console.log(rstArr+"-"+eightArr);
 	
 	var trstArr = rstArr;
 	var teightArr = eightArr;
@@ -27,10 +27,10 @@ for(var j = 0; j < 6; j++){
 		eightArr = teightArr;
 		x3 = teightArr[ii];
 		y3 = x3 + values[3];
-		if(eightArr.indexOf(y3) > -1){ //console.log(999);
+		if(eightArr.indexOf(y3) > -1){
 			rstArr[2]=(x3); eightArr.remove(eightArr.indexOf(x3));
 			rstArr[3]=(y3); eightArr.remove(eightArr.indexOf(y3));
-			// console.log(rstArr+"-"+eightArr);
+			console.log(rstArr+"-"+eightArr);
 
 			var trstArr1 = rstArr;
 			var teightArr1 = eightArr;
@@ -46,31 +46,36 @@ for(var j = 0; j < 6; j++){
 					if(eightArr[0]+eightArr[1] == values[1]){
 						rstArr[6]=(eightArr[0]);
 						rstArr[7]=(eightArr[1]);
+						eightArr.remove(0);
+						eightArr.remove(1);
 						mark++;
 						console.log(rstArr);
-						break;
 					}else{
 						eightArr.push(x2);
 						eightArr.push(y2);
+						rstArr.remove(4);
+						rstArr.remove(4);
 					}
 				}else{
 					continue;
 				}
 			}
-			if(mark == 0){
-				eightArr.push(x3);
-				eightArr.push(y3);
-			}
+			eightArr.push(x3);
+			eightArr.push(y3);
+			rstArr.remove(2);
+			rstArr.remove(2);
 		}else{
 			continue;
 		}
 
 	}
-	if(mark == 0){
-		eightArr.push(x);
-		eightArr.push(y);
-	}
+	eightArr.push(x);
+	eightArr.push(y);
+	rstArr.remove(0);
+	rstArr.remove(0);
 }
 if(mark == 0){
 	console.log("None");
+}else{
+	console.log("Find : "+mark);
 }
