@@ -3,6 +3,7 @@
 // y2 + x2 = 9;
 // y1 + x1 = 8;
 // y - x = 2;
+// 例如 ：x =1 ;y = 3; x1 = 2; y1= 6; x2 = 4; y2 = 5; y3 = 8; x3 = 7 
 var values = [2,8,9,1];
 Array.prototype.remove = function(dx) 
 { 
