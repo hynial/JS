@@ -16,15 +16,18 @@ var rstArr = new Array(8);
 for(var j = 0; j < 6; j++){
 	rstArr = new Array();
 	eightArr = new Array(1, 2, 3, 4, 5, 6, 7, 8);
-	x = j + 1; rstArr[0]=(x); eightArr.remove(eightArr.indexOf(x));
-	y = x + values[0]; rstArr[1]=(y); eightArr.remove(eightArr.indexOf(y));
+	x = j + 1; 
+	y = x + values[0]; 
+	rstArr[0]=(x); eightArr.remove(eightArr.indexOf(x));
+	rstArr[1]=(y); eightArr.remove(eightArr.indexOf(y));
 	console.log(rstArr+"-"+eightArr);
 	
-	var trstArr = rstArr;
-	var teightArr = eightArr;
+	var trstArr = rstArr.slice(0);
+	var teightArr = eightArr.concat();
+
 	for(var ii = 0; ii < teightArr.length - 1; ii++){
-		rstArr = trstArr;
-		eightArr = teightArr;
+		rstArr = trstArr.slice(0);
+		eightArr = teightArr.concat();
 		x3 = teightArr[ii];
 		y3 = x3 + values[3];
 		if(eightArr.indexOf(y3) > -1){
@@ -32,12 +35,12 @@ for(var j = 0; j < 6; j++){
 			rstArr[3]=(y3); eightArr.remove(eightArr.indexOf(y3));
 			console.log(rstArr+"-"+eightArr);
 
-			var trstArr1 = rstArr;
-			var teightArr1 = eightArr;
+			var trstArr1 = rstArr.slice(0);
+			var teightArr1 = eightArr.concat();
 			for(var jj = 0; jj < teightArr1.length - 1; jj++){
-				rstArr = trstArr1;
-				eightArr = teightArr1;
-				x2 = teightArr1[jj];
+				rstArr = trstArr1.slice(0);
+				eightArr = teightArr1.concat();
+				x2 = teightArr1[jj];//console.log(x2+'.'+jj);
 				y2 = values[2] - x2;
 				if(eightArr.indexOf(y2) > -1){
 					rstArr[4]=(x2); eightArr.remove(eightArr.indexOf(x2));
@@ -46,33 +49,18 @@ for(var j = 0; j < 6; j++){
 					if(eightArr[0]+eightArr[1] == values[1]){
 						rstArr[6]=(eightArr[0]);
 						rstArr[7]=(eightArr[1]);
-						eightArr.remove(0);
-						eightArr.remove(1);
 						mark++;
 						console.log(rstArr);
-					}else{
-						eightArr.push(x2);
-						eightArr.push(y2);
-						rstArr.remove(4);
-						rstArr.remove(4);
 					}
 				}else{
 					continue;
 				}
 			}
-			eightArr.push(x3);
-			eightArr.push(y3);
-			rstArr.remove(2);
-			rstArr.remove(2);
 		}else{
 			continue;
 		}
 
 	}
-	eightArr.push(x);
-	eightArr.push(y);
-	rstArr.remove(0);
-	rstArr.remove(0);
 }
 if(mark == 0){
 	console.log("None");
