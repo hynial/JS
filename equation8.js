@@ -22,7 +22,7 @@ for(var j = 0; j < 6; j++){
 	rstArr[1]=(y); eightArr.remove(eightArr.indexOf(y));
 	console.log(rstArr+"-"+eightArr);
 	
-	var trstArr = rstArr.slice(0);
+	var trstArr = rstArr.slice(0);// slice(0)和concat()都是数组的复制，不能用=赋值的方式，js中表示引用的赋值，修改会相互影响
 	var teightArr = eightArr.concat();
 
 	for(var ii = 0; ii < teightArr.length - 1; ii++){
